@@ -21,14 +21,14 @@ export function BackgroundMusic() {
       console.log("Initializing audio files...");
       
       // Try to load background music
-      const bgMusic = new Audio("/sounds/background.mp3");
+      const bgMusic = new Audio("./sounds/background.mp3");
       bgMusic.loop = true;
       bgMusic.volume = 0.5;
       
       // Add error handling
       bgMusic.addEventListener('error', (e) => {
         console.error("Error loading background music:", e);
-        console.error("Audio path attempted:", "/sounds/background.mp3");
+        console.error("Audio path attempted:", "./sounds/background.mp3");
         console.log("Trying to create a test tone instead...");
         
         // Create a simple test tone as fallback
@@ -56,12 +56,12 @@ export function BackgroundMusic() {
       useAudio.getState().setBackgroundMusic(bgMusic);
 
       // Load success sound
-      const successSound = new Audio("/sounds/success.mp3");
+      const successSound = new Audio("./sounds/success.mp3");
       
       // Add error handling
       successSound.addEventListener('error', (e) => {
         console.error("Error loading success sound:", e);
-        console.error("Audio path attempted:", "/sounds/success.mp3");
+        console.error("Audio path attempted:", "./sounds/success.mp3");
       });
       
       successSound.addEventListener('load', () => {
@@ -71,7 +71,7 @@ export function BackgroundMusic() {
       useAudio.getState().setSuccessSound(successSound);
 
       // Load face scream using fetch
-      fetch("/sounds/Facescream.mp3?t=" + Date.now())
+      fetch("./sounds/Facescream.mp3?t=" + Date.now())
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -86,11 +86,11 @@ export function BackgroundMusic() {
         })
         .catch(error => {
           console.error("Error loading face scream via fetch:", error);
-          console.error("Fetch path attempted:", "/sounds/Facescream.mp3?t=" + Date.now());
+          console.error("Fetch path attempted:", "./sounds/Facescream.mp3?t=" + Date.now());
         });
 
       // Load stare SFX using fetch
-      fetch("/sounds/Starescream.mp3?t=" + Date.now())
+      fetch("./sounds/Starescream.mp3?t=" + Date.now())
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -105,7 +105,7 @@ export function BackgroundMusic() {
         })
         .catch(error => {
           console.error("Error loading stare SFX via fetch:", error);
-          console.error("Fetch path attempted:", "/sounds/Starescream.mp3?t=" + Date.now());
+          console.error("Fetch path attempted:", "./sounds/Starescream.mp3?t=" + Date.now());
         });
 
       audioInitialized.current = true;

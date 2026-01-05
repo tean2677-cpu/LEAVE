@@ -117,7 +117,7 @@ export function StareSpawner() {
 type SpawnSide = "left" | "right";
 
 // Preload the model
-useGLTF.preload("/geometries/Stare Enemy.glb");
+useGLTF.preload("./geometries/Stare Enemy.glb");
 
 function Monster({
   position,
@@ -130,7 +130,7 @@ function Monster({
   onActivate: () => void;
   onDefeated: () => void;
 }) {
-  const { scene } = useGLTF("/geometries/Stare Enemy.glb", true);
+  const { scene } = useGLTF("./geometries/Stare Enemy.glb", true);
   const groupRef = useRef<THREE.Group>(null);
   const { camera } = useThree();
   const updateHydration = useBedroomGame((state) => state.updateHydration);

@@ -146,7 +146,7 @@ type SpawnArea = {
 };
 
 // Preload the model
-useGLTF.preload("/geometries/Face Enemy.glb");
+useGLTF.preload("./geometries/Face Enemy.glb");
 
 function Monster({
   position,
@@ -157,7 +157,7 @@ function Monster({
   onActivate: () => void;
   onDefeated: () => void;
 }) {
-  const { scene } = useGLTF("/geometries/Face Enemy.glb", true);
+  const { scene } = useGLTF("./geometries/Face Enemy.glb", true);
   const groupRef = useRef<THREE.Group>(null);
   const { camera } = useThree();
   const setFearMultiplier = useBedroomGame((state) => state.setFearMultiplier);

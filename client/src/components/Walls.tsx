@@ -2,7 +2,7 @@ import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 export function CenterWall() {
-  const woodTexture = useTexture("/textures/wood.jpg");
+  const woodTexture = useTexture("./textures/wood.jpg");
   
   return (
     <group position={[0, 0, -8]}>
@@ -30,7 +30,7 @@ export function CenterWall() {
 }
 
 export function LeftWall() {
-  const woodTexture = useTexture("/textures/wood.jpg");
+  const woodTexture = useTexture("./textures/wood.jpg");
   
   return (
     <group position={[-9, 0, -3]} rotation={[0, Math.PI / 6, 0]}>
@@ -76,7 +76,7 @@ export function LeftWall() {
 }
 
 export function RightWall() {
-  const woodTexture = useTexture("/textures/wood.jpg");
+  const woodTexture = useTexture("./textures/wood.jpg");
   
   return (
     <group position={[9, 0, -3]} rotation={[0, -Math.PI / 6, 0]}>
@@ -104,7 +104,7 @@ export function RightWall() {
 }
 
 export function Floor() {
-  const woodTexture = useTexture("/textures/wood.jpg");
+  const woodTexture = useTexture("./textures/wood.jpg");
   woodTexture.wrapS = woodTexture.wrapT = THREE.RepeatWrapping;
   woodTexture.repeat.set(4, 4);
   
@@ -117,7 +117,7 @@ export function Floor() {
 }
 
 export function Bed() {
-  const woodTexture = useTexture("/textures/wood.jpg");
+  const woodTexture = useTexture("./textures/wood.jpg");
   
   return (
     <group position={[0, -1.5, 1]}>
