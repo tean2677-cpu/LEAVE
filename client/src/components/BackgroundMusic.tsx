@@ -71,7 +71,7 @@ export function BackgroundMusic() {
       useAudio.getState().setSuccessSound(successSound);
 
       // Load face scream using fetch
-      fetch("./sounds/Facescream.mp3?t=" + Date.now())
+      fetch("./sounds/FaceScream.mp3?t=" + Date.now())
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -86,7 +86,7 @@ export function BackgroundMusic() {
         })
         .catch(error => {
           console.error("Error loading face scream via fetch:", error);
-          console.error("Fetch path attempted:", "./sounds/Facescream.mp3?t=" + Date.now());
+          console.error("Fetch path attempted:", "./sounds/FaceScream.mp3?t=" + Date.now());
         });
 
       // Load stare SFX using fetch
