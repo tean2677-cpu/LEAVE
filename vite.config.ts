@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
-  base: "/LEAVE/",   // ⭐ REQUIRED FOR GITHUB PAGES
+  base: "/LEAVE/",   // GitHub Pages path
 
   plugins: [
     react(),
@@ -29,6 +29,16 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
+    target: 'es2015', // Target older browsers
+    rollupOptions: {
+      output: {
+        format: 'iife', // Immediately Invoked Function Expression
+        entryFileNames: 'bundle.js',
+        chunkFileNames: 'chunk.js',
+        assetFileNames: 'assets/[name].[ext]'
+      }
+    },
+    assetsDir: 'assets'
   },
 
   assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.mp3", "**/*.ogg", "**/*.wav"],

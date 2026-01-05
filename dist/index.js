@@ -26,7 +26,7 @@ var __filename = fileURLToPath(import.meta.url);
 var __dirname = dirname(__filename);
 var vite_config_default = defineConfig({
   base: "/LEAVE/",
-  // ⭐ REQUIRED FOR GITHUB PAGES
+  // GitHub Pages path
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -42,7 +42,19 @@ var vite_config_default = defineConfig({
   root: path.resolve(__dirname, "client"),
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
-    emptyOutDir: true
+    emptyOutDir: true,
+    target: "es2015",
+    // Target older browsers
+    rollupOptions: {
+      output: {
+        format: "iife",
+        // Immediately Invoked Function Expression
+        entryFileNames: "bundle.js",
+        chunkFileNames: "chunk.js",
+        assetFileNames: "assets/[name].[ext]"
+      }
+    },
+    assetsDir: "assets"
   },
   assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.mp3", "**/*.ogg", "**/*.wav"]
 });
