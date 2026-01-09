@@ -12,7 +12,7 @@ export function GameTimer() {
 
     const interval = setInterval(() => {
       updateHydration(-0.5);
-      updateFear(0.1);
+      updateFear(0.33);
       updateTime(1);
     }, 1000);
 

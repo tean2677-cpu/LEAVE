@@ -54,8 +54,8 @@ export const useBedroomGame = create<BedroomGameState>((set, get) => ({
   fearMultiplier: 1,
   fearDeathSource: "normal",
   currentTime: 0,
-  teddyBearUses: 5,
-  waterUses: 5,
+  teddyBearUses: 10,
+  waterUses: 10,
   gameState: "playing",
   currentNight: 1,
   isEpilogue: false,
@@ -167,8 +167,8 @@ export const useBedroomGame = create<BedroomGameState>((set, get) => ({
       fearMultiplier: 1,
       fearDeathSource: "normal",
       currentTime: 0,
-      teddyBearUses: 5,
-      waterUses: 5,
+      teddyBearUses: 10,
+      waterUses: 10,
       gameState: "playing",
       currentView: "center",
       verticalView: "standing",
@@ -187,8 +187,8 @@ export const useBedroomGame = create<BedroomGameState>((set, get) => ({
       fearMultiplier: 1,
       fearDeathSource: "normal",
       currentTime: 0,
-      teddyBearUses: 5,
-      waterUses: 5,
+      teddyBearUses: 10,
+      waterUses: 10,
       gameState: "playing",
       currentView: "center",
       verticalView: "standing",
@@ -212,6 +212,7 @@ interface FlashlightState {
   giveFlashlight: () => void;
   drainBattery: (amount: number) => void;
   resetFlashlight: () => void;
+  setBattery: (amount: number) => void;
 }
 
 export const useFlashlight = create<FlashlightState>((set, get) => ({
@@ -233,6 +234,11 @@ export const useFlashlight = create<FlashlightState>((set, get) => ({
       hasFlashlight: false,
       battery: 100,
     }),
+
+  setBattery: (amount: number) =>
+    set((state) => ({
+      battery: Math.max(0, Math.min(100, amount)),
+    })),
 
   drainBattery: (amount) =>
     set((state) => ({

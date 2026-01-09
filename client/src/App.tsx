@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { KeyboardControls } from "@react-three/drei";
 import "@fontsource/inter";
 import { CameraController } from "./components/CameraController";
-import { Flashlight } from "./components/Flashlight";
 import { CenterWall, LeftWall, RightWall, Floor, Bed } from "./components/Walls";
 import { GameUI } from "./components/GameUI";
 import { GameTimer } from "./components/GameTimer";
@@ -11,12 +10,12 @@ import { GameOverScreen } from "./components/GameOverScreen";
 import { FlashlightBeamWithCamera } from "./components/FlashlightBeam";
 import { BatteryUI } from "./components/Battery UI";
 import { FlashlightBatteryController } from "./components/FlashlightBatteryController";
-import { FillerWallLeft, FillerWallRight } from "./components/FillerWalls";
 import { FaceSpawner } from './components/FaceSpawner';
 import { StareSpawner } from "./components/StareSpawner";
 import {MainMenu} from './components/Mainmenu'
 import { Diary } from "./components/Diary";
 import { BackgroundMusic } from "./components/BackgroundMusic";
+import { BatteryRegenerator } from "@/components/BatteryRegenerator";
 import { useState, useEffect } from "react";
 import { useBedroomGame } from "./lib/stores/useBedroomGame";
 
@@ -155,24 +154,22 @@ function App() {
           <color attach="background" args={["#0a0a0a"]} />
           <fog attach="fog" args={["#0a0a0a", 1.5, 10]} />
 
-          <ambientLight intensity={0.05} />
-          <directionalLight position={[0, 5, 2]} intensity={0.5} />
-          <pointLight position={[0, 2, 0]} intensity={0.4} color="#fff8dc" />
+          <ambientLight intensity={0.15} />
+          <directionalLight position={[0, 5, 2]} intensity={0.8} />
+          <pointLight position={[0, 2, 0]} intensity={0.7} color="#fff8dc" />
 
           <Suspense fallback={null}>
             <CenterWall />
             <LeftWall />
             <RightWall />
-            <FillerWallLeft />
-            <FillerWallRight />
             <Floor />
             <Bed />
           </Suspense>
 
           <CameraController />
-          <Flashlight />
           <FlashlightBeamWithCamera />
           <FlashlightBatteryController />
+          <BatteryRegenerator />
           <FaceSpawner />
           <StareSpawner />
         </Canvas>

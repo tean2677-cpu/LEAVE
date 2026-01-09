@@ -103,7 +103,31 @@ export function FaceSpawner() {
       const timeoutId = window.setTimeout(() => {
         setMonsters((prev) => {
           if (prev.length > 0) return prev; // only 1 monster at a time
-          if (Math.random() >= 0.1) return prev; // 10% chance
+          
+          // Calculate fear-based spawn multiplier
+          const fear = useBedroomGame.getState().fear;
+          const currentNight = useBedroomGame.getState().currentNight;
+          let spawnMultiplier = 1; // Default at fear=50 (medium)
+          
+          if (fear <= 0) {
+            spawnMultiplier = 0.5; // Very low chance at 0 fear
+          } else if (fear >= 100) {
+            spawnMultiplier = 1.5; // Double chance at 100 fear
+          } else {
+            // Linear interpolation between 0.5x and 1.5x
+            // fear=0 -> 0.5x, fear=50 -> 1x, fear=100 -> 1.5x
+            spawnMultiplier = 0.5 + (fear / 100) * 1.0;
+          }
+          
+          // Add night-based scaling (1.2x per night)
+          const nightMultiplier = 1 + (currentNight - 1) * 0.2;
+          
+          const baseChance = 0.075; // 7.5% base chance
+          const adjustedChance = Math.min(baseChance * spawnMultiplier * nightMultiplier, 1.0); // Cap at 100%
+          
+          console.log(`Face spawn: fear=${fear}, night=${currentNight}, fearMult=${spawnMultiplier.toFixed(2)}, nightMult=${nightMultiplier.toFixed(2)}, finalChance=${(adjustedChance * 100).toFixed(1)}%`);
+          
+          if (Math.random() >= adjustedChance) return prev;
           return [getRandomPosition()];
         });
         

@@ -10,7 +10,7 @@ export function FlashlightBatteryController() {
 
     const drainInterval = setInterval(() => {
       drainBattery(1);
-    }, 1500); // 1.5 second
+    }, 2000); // 3 seconds
 
     return () => clearInterval(drainInterval);
   }, [isLightOn, drainBattery]);

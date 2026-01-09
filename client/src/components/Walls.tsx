@@ -153,7 +153,7 @@ export function Bed() {
         <meshStandardMaterial map={woodTexture} color="#2a1a0a" />
       </mesh>
       
-      <group position={[-1.2, 0.8, 0]}>
+      <group position={[-2.0, 0.8, -0.5]}>
         <mesh position={[0, 0.3, 0]}>
           <sphereGeometry args={[0.25, 16, 16]} />
           <meshStandardMaterial color="#8B4513" />
@@ -180,7 +180,7 @@ export function Bed() {
         </mesh>
       </group>
       
-      <group position={[1.2, 0.8, 0]}>
+      <group position={[2.0, 0.8, -0.5]}>
         <mesh position={[0, 0, 0]}>
           <cylinderGeometry args={[0.12, 0.12, 0.3, 16]} />
           <meshStandardMaterial color="#87ceeb" transparent opacity={0.7} />

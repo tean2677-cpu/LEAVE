@@ -3,7 +3,6 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
 import { useBedroomGame } from "@/lib/stores/useBedroomGame";
 import { CenterWall, LeftWall, RightWall, Floor, Bed } from "./Walls";
-import { FillerWallLeft, FillerWallRight } from "./FillerWalls";
 import * as THREE from "three";
 import { useAudio } from "@/lib/stores/useAudio";
 
@@ -71,8 +70,6 @@ function BedroomScene() {
       <RightWall />
       <Floor />
       <Bed />
-      <FillerWallLeft />
-      <FillerWallRight />
     </group>
   );
 }
